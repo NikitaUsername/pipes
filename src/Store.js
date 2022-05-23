@@ -69,7 +69,7 @@ class Store {
 
             if (answerType === 'verify') {
                 if (answerData !== 'Incorrect.') {
-                    this.setMazeDone(true, answerData);
+                    this.setMazeDone(true, answer[2]);
                 }
                 else
                     if (this.attemptsLeft === 0) {
@@ -81,14 +81,11 @@ class Store {
         })
     }
 
-    closeConnection = () => {
-        this.socket.close();
-    }
-
     startLevel = (level) => {
         this.loaded = false;
         this.password = '';
         this.loose = false;
+        this.mazeDone = false;
         this.attemptsLeft = 10;
         this.currentLevel = level;
         this.socket.send(`new ${level}`);
@@ -102,8 +99,9 @@ class Store {
 
     setMazeDone = (value, password) => {
         this.mazeDone = value;
-        if (value)
+        if (value) {
             this.password = password
+        }
     }
 
     verify = () => {

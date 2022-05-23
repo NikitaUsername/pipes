@@ -18,8 +18,8 @@ const App = observer(() => {
     <div className="App">
       {store.loaded ?
         <div className='mainBlock'>
-          <Maze />
           <Buttons />
+          <Maze />
         </div>
         :
         <Spin className='spin' size='large' />
