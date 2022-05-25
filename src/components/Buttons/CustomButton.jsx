@@ -1,8 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { useStores } from '../useStores';
+import { useStores } from '../../useStores';
 import { Button } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
+import styles from './Buttons.module.css';
 
 const CustomButton = observer((props) => {
     const store = useStores().store;
@@ -10,7 +11,7 @@ const CustomButton = observer((props) => {
     return (
         <Button
             type={store.currentLevel === props.level ? 'primary' : 'default'}
-            className='levelButton'
+            className={styles.levelButton}
             onClick={() => store.startLevel(props.level)}
             disabled={props.locked}
         >

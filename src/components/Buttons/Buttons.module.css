@@ -1,0 +1,18 @@
+buttonsBlock levelButtons actionButtons .buttonsBlock {
+    margin: 20px;
+}
+
+.levelButton {
+    width: 60px;
+    margin: 5px;
+}
+
+.levelButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.actionButton {
+    width: 130px;
+    margin: 5px;
+}

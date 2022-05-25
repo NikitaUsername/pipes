@@ -10,6 +10,7 @@ class Store {
     attemptsLeft = 10;
     loose = false;
     password = ''
+    buttons = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -102,6 +103,7 @@ class Store {
         if (value) {
             this.password = password
         }
+        localStorage.setItem(`level${this.currentLevel}`,'password');
     }
 
     verify = () => {
@@ -119,6 +121,22 @@ class Store {
             description,
             placement: 'bottom',
         });
+    }
+
+    checkLevels = () => {
+        this.buttons = [];
+        for (let i = 1; i < 7; i++) {
+            let locked = false;
+            if (i > 3) {
+                if (!localStorage.getItem(`level${i - 1}`)) {
+                    locked = true;
+                }
+            }
+            this.buttons.push({
+                level: i,
+                locked
+            });
+        }
     }
 }
 

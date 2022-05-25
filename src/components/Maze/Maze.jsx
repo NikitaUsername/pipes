@@ -1,17 +1,19 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { useStores } from '../useStores';
+import { useStores } from '../../useStores';
+import styles from './Maze.module.css';
 
 const Maze = observer(() => {
     const store = useStores().store;
 
     return (
-        <div className='mazeBlock'>
-            <div className='mazeContainer'>
+        <div className={styles.mazeBlock}>
+            <div className={styles.mazeContainer}>
                 {!store.loose && store.currentLevel && !store.mazeDone &&
-                    <pre className='maze'>
+                    <pre className={styles.maze}>
                         {store.maze.map((el, index) =>
-                            <span className='mazeElement' key={index} onClick={() => store.rotate(el)}>
+                            <span className={styles.mazeElement} key={index}
+                                onClick={() => store.rotate(el)}>
                                 {el.value}
                             </span>
                         )}
@@ -19,17 +21,17 @@ const Maze = observer(() => {
 
                 {store.loose &&
                     <div>
-                        <p className='title looseTitle'>You loose!</p>
+                        <p className={`${styles.title} ${styles.looseTitle}`}>You loose!</p>
                     </div>
                 }
                 {!store.currentLevel &&
                     <div>
-                        <p className='title selectTitle'>Select level</p>
+                        <p className={`${styles.title} ${styles.selectTitle}`}>Select level</p>
                     </div>
                 }
                 {store.mazeDone &&
                     <div>
-                        <p className='title doneTitle'>
+                        <p className={`${styles.title} ${styles.doneTitle}`}>
                             Congradulations! <br />
                             Here is you password:<br />
                             {store.password}
@@ -37,7 +39,7 @@ const Maze = observer(() => {
                     </div>
                 }
             </div>
-        </div>
+        </div >
     );
 });
 

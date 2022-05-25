@@ -1,0 +1,41 @@
+.mazeBlock {
+    max-height: 73vh;
+    overflow: auto;
+}
+
+.mazeContainer {
+    width: fit-content;
+    margin: auto;
+}
+
+.maze {
+    line-height: 1.18;
+    width: fit-content;
+    margin: 0 30px 10px;
+    font-size: 50px;
+}
+
+.mazeElement:hover {
+    cursor: pointer;
+    color: #1890ff;
+    display: inline-block;
+    transform: translateY(-2px);
+}
+
+.title {
+    margin-top: 100px;
+    font-size: xxx-large;
+    font-weight: 900;
+}
+
+.looseTitle {
+    color: rgb(255, 0, 0);
+}
+
+.selectTitle {
+    color: #1890ff;
+}
+
+.doneTitle {
+    color: green;
+}

@@ -1,10 +1,11 @@
-import '../styles/App.css';
 import { observer } from 'mobx-react';
-import { useStores } from '../useStores';
+import { useStores } from '../../useStores';
 import { useEffect } from 'react';
-import Maze from './Maze';
-import Buttons from './Buttons';
+import Maze from '../Maze/Maze';
+import Buttons from '../Buttons/Buttons';
 import { Spin } from 'antd';
+import styles from './App.module.css';
+
 
 const App = observer(() => {
 
@@ -12,17 +13,18 @@ const App = observer(() => {
 
   useEffect(() => {
     store.openConnection();
+    store.checkLevels();
   }, [store])
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       {store.loaded ?
-        <div className='mainBlock'>
+        <div className={styles.mainBlock}>
           <Buttons />
           <Maze />
         </div>
         :
-        <Spin className='spin' size='large' />
+        <Spin className={styles.spin} size='large' />
       }
     </div >
   );
