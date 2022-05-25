@@ -103,7 +103,7 @@ class Store {
         if (value) {
             this.password = password
         }
-        localStorage.setItem(`level${this.currentLevel}`,'password');
+        localStorage.setItem(`level${this.currentLevel}`, 'password');
     }
 
     verify = () => {
@@ -128,7 +128,7 @@ class Store {
         for (let i = 1; i < 7; i++) {
             let locked = false;
             if (i > 3) {
-                if (!localStorage.getItem(`level${i - 1}`)) {
+                if (!localStorage.getItem(`level${i - 1}`) || i === 6) {
                     locked = true;
                 }
             }
